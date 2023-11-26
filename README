@@ -1,0 +1,121 @@
+README
+Kaelen Song and Mia Taylor 
+Kaelen Song: ksong05
+Mia Taylor: mtaylo16
+10/5/2023
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//* * What has been correctly implemented and what has not * *\\
+
+All aspects of the project should be implemented correctly.
+This includes:
+    UArray2b
+        -uarray2b.c, uarray2b.c
+    the executable transppm
+        -ppmtrans.c, transform.c, transform.h
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//* * Architecture * *\\
+
+ppmtrans - checks for valid command line arguments then calls transformPic()
+        Holds the main function which is responsible for obtaining user inputs
+
+
+transform: Calls functions from modules rotate, flip, transpose and timerfile
+Acts as a 'secondary' main for operations and calls the needed functions
+
+
+rotate, flip, transpose: All three of these files interact with our other 
+        modules in the same manner as they all perform similar operations. 
+       -Starts a timer object that was created in transform and 
+            returns the data
+       -The module(s) calls updatepic in order to create a new Pnm_ppm
+       -Calls getmethod to receive the method and map requested by user and 
+           is stored in pnm_ppm
+       -These modules hide how the transformations are actually implemented 
+            and performed on the picture.
+
+
+updatepic: Is used by transformation functions to create a new Pnm_ppm based 
+           on the original image that is being transformed
+         -This modules hides interactions that go into the Pnm_ppm struct, 
+          which creates a layer of abstraction to hide image data.
+
+
+timerfile: Is used by transformPic() in transform to write to the file that 
+           contains information about the timer. 
+
+
+getmethod: is used to store a helper function that all transformations need, 
+           gets the method held in the Pnm_ppm picture
+___
+uarray2, uarray2b, A2methods
+
+-For ppmtrans, these files provide working data structures and functions for 
+those data structures, used to store and transform the pictures 
+-hide implementation details of the data structures themselves
+//* * Measured Perfomrance (Part E) * *\\
+
+Computer Specs: MacBook Pro 2018, Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz
+
+
+mobo.ppm : 8160 X 6120
+ * measurements in nanoseconds *
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+               |  Row Major |  Col Major  | Block Major |
+━━━━━━━━━━━━━━━|━━━━━━━━━━━━|━━━━━━━━-━━━━|━━━━━━━━━━━━━|
+Rotate 90      | 4578452005 | 4577486824  | 3579580998  |
+    per pixel: | 92         | 92          | 72          |
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|
+Rotate 180     | 476848     | 599319      | 901104      |
+    per pixel: | 33         | 41          | 62          |
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|
+Rotate 270     | 4555193041 | 4478797652  | 3372851123  |
+    per pixel: | 91         | 90          | 68          |
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|
+
+newton.ppm : 1152 X 864
+ * measurements in nanoseconds *
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+               |  Row Major |  Col Major  | Block Major |
+━━━━━━━━━━━━━━━|━━━━━━━━━━━━|━━━━━━━━-━━━━|━━━━━━━━━━━━━|
+Rotate 90      | 62455601   | 64887883    | 70147163    |
+    per pixel: | 63         | 65          | 70          |
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|
+Rotate 180     | 36838282   | 36453674    | 6035742     |
+    per pixel: | 37         | 37          | 61          |
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|
+Rotate 270     | 60353206   | 60011103    | 66008684    |
+    per pixel: | 61         | 60          | 68          |
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|
+
+It looks like for all mappings and both images, rotate 180 was by far the
+quickest. This could be becasue there is less math needed to get the new
+location for each pixel.
+
+Row major and column major rotations seem to be all around the same speed.
+This makes sense as both use plain arrays (UArray2s).
+
+For the two images we tried, the instructions per pixel were very similar for 
+rotate 180 and for all operation using Block Major.
+
+The time per pixel remains relatively consistent across the two image sizes,
+especially for the same rotation angle and mapping type.
+
+Block major seemed to stay at around the same speed, no matter what size the
+image was, meaning that for smaller images it would be slower than row/col
+major for transformations but faster for block-major. This makes sense
+because each block is accessed as a unit so the time it takes to access a 
+block does not necesarily depend on the size of the image. 
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//* * Acknowledgements: * *\\
+
+We dicussed this project with 3 TAs:
+    The first was for advice about how commands were processed 
+    The second was for help with the transomfrred images being green, was a 
+                                                            pointer problem
+    THe thrid was for advice about global variables
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//* * Hours Spent: * *\\
+
+29h 30 min
