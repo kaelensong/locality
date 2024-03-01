@@ -33,7 +33,7 @@ uarray2, uarray2b, A2methods <br />
 Computer Specs: MacBook Pro 2018, Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz <br />
 <br />
 mobo.ppm : 8160 X 6120 <br />
- * measurements in nanoseconds * <br />
+measurements in nanoseconds <br />
        - Rotate 90
          - Row Major: 4578452005
            - per pixel: 92
