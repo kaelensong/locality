@@ -1,17 +1,6 @@
 README
 Kaelen Song and Mia Taylor 
-Kaelen Song: ksong05
-Mia Taylor: mtaylo16
 10/5/2023
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//* * What has been correctly implemented and what has not * *\\
-
-All aspects of the project should be implemented correctly.
-This includes:
-    UArray2b
-        -uarray2b.c, uarray2b.c
-    the executable transppm
-        -ppmtrans.c, transform.c, transform.h
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 //* * Architecture * *\\
 
@@ -105,16 +94,6 @@ image was, meaning that for smaller images it would be slower than row/col
 major for transformations but faster for block-major. This makes sense
 because each block is accessed as a unit so the time it takes to access a 
 block does not necesarily depend on the size of the image. 
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//* * Acknowledgements: * *\\
-
-We dicussed this project with 3 TAs:
-    The first was for advice about how commands were processed 
-    The second was for help with the transomfrred images being green, was a 
-                                                            pointer problem
-    THe thrid was for advice about global variables
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 //* * Hours Spent: * *\\
 
