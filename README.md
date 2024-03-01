@@ -2,7 +2,6 @@
 performs various transformations on a ppm image <br />
 <br />
 # Architecture
-<br />
 ppmtrans - checks for valid command line arguments then calls transformPic() <br />
         Holds the main function which is responsible for obtaining user inputs <br />
 <br />
