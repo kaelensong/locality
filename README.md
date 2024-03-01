@@ -1,7 +1,7 @@
-# locality <br />
+# locality
 performs various transformations on a ppm image <br />
 <br />
-# Architecture <br />
+# Architecture
 <br />
 ppmtrans - checks for valid command line arguments then calls transformPic() <br />
         Holds the main function which is responsible for obtaining user inputs <br />
@@ -28,7 +28,8 @@ uarray2, uarray2b, A2methods <br />
 -For ppmtrans, these files provide working data structures and functions for those data structures, used to store and transform the pictures <br />
 -hide implementation details of the data structures themselves <br />
 <br />
-# Measured Performance <br />
+
+# Measured Performance
 Computer Specs: MacBook Pro 2018, Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz <br />
 <br />
 mobo.ppm : 8160 X 6120 <br />
