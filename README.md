@@ -34,33 +34,50 @@ Computer Specs: MacBook Pro 2018, Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz <br /
 <br />
 mobo.ppm : 8160 X 6120 <br />
  * measurements in nanoseconds * <br />
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <br />
-               |  Row Major |  Col Major  | Block Major | <br />
-━━━━━━━━━━━━━━━|━━━━━━━━━━━━|━━━━━━━━━━━━|━━━━━━━━━━━━━| <br />
-Rotate 90      | 4578452005 | 4577486824  | 3579580998  | <br />
-    per pixel: | 92         | 92          | 72          | <br />
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ | <br />
-Rotate 180     | 476848     | 599319      | 901104      | <br />
-    per pixel: | 33         | 41          | 62          | <br />
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br />
-Rotate 270     | 4555193041 | 4478797652  | 3372851123  | <br />
-    per pixel: | 91         | 90          | 68          | <br />
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ | <br />
+       - Rotate 90
+         - Row Major: 4578452005
+           - per pixel: 92
+         - Col Major: 4577486824
+           - per pixel: 92
+         - Block Major: 3579580998
+           - per pixel: 72
+       - Rotate 180
+         - Row Major: 476848
+           - per pixel: 33
+         - Col Major: 599319
+           - per pixel: 41
+         - Block Major: 901104
+           - per pixel: 62
+       - Rotate 270
+         - Row Major: 4555193041
+           - per pixel: 91
+         - Col Major: 4478797652
+           - per pixel: 90
+         - Block Major: 3372851123
+           - per pixel: 68
+ <br />newton.ppm : 1152 X 864 <br />
+     - Rotate 90
+       - Row Major: 62455601
+         - per pixel: 63
+       - Col Major: 64887883
+         - per pixel: 65
+       - Block Major: 70147163
+         - per pixel: 70
+     - Rotate 180
+       - Row Major: 36838282
+         - per pixel: 37
+       - Col Major: 36453674
+         - per pixel: 37
+       - Block Major: 6035742
+         - per pixel: 61
+     - Rotate 270
+       - Row Major: 60353206
+         - per pixel: 61
+       - Col Major: 60011103
+         - per pixel: 60
+       - Block Major: 66008684
+         - per pixel: 68
 
-newton.ppm : 1152 X 864 <br />
- * measurements in nanoseconds * <br />
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <br />
-               |  Row Major |  Col Major  | Block Major | <br />
-━━━━━━━━━━━━━━━|━━━━━━━━━━━━|━━━━━━━━━━━━|━━━━━━━━━━━━━| <br />
-Rotate 90      | 62455601   | 64887883    | 70147163    | <br />
-    per pixel: | 63         | 65          | 70          | <br />
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <br />
-Rotate 180     | 36838282   | 36453674    | 6035742     | <br />
-    per pixel: | 37         | 37          | 61          | <br />
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ | <br />
-Rotate 270     | 60353206   | 60011103    | 66008684    | <br />
-    per pixel: | 61         | 60          | 68          | <br />
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <br />
 <br />
 It looks like for all mappings and both images, rotate 180 was by far the quickest. This could be because there is less math needed to get the new location for each pixel. <br />
 <br />
